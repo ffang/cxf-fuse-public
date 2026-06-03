@@ -43,6 +43,7 @@ import org.apache.cxf.transport.http_undertow.UndertowHTTPServerEngineFactory;
 import org.apache.cxf.jca.core.resourceadapter.JndiNameValidator;
 
 
+
 public class EJBEndpoint {
 
     private static final Logger LOG = LogUtils.getL7dLogger(EJBEndpoint.class);
