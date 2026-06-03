@@ -38,8 +38,10 @@ import org.apache.cxf.common.util.PackageUtils;
 import org.apache.cxf.endpoint.Server;
 import org.apache.cxf.frontend.ServerFactoryBean;
 import org.apache.cxf.jaxws.JaxWsServerFactoryBean;
+import org.apache.cxf.jca.core.resourceadapter.JndiNameValidator;
 import org.apache.cxf.transport.http_undertow.UndertowHTTPServerEngine;
 import org.apache.cxf.transport.http_undertow.UndertowHTTPServerEngineFactory;
+
 
 
 public class EJBEndpoint {
@@ -66,6 +68,7 @@ public class EJBEndpoint {
 
     public Server publish() throws Exception {
         jndiContext = new InitialContext();
+        JndiNameValidator.validateJndiName(config.getJNDIName());
         Object obj = jndiContext.lookup(config.getJNDIName());
         ejbHome = (EJBHome) PortableRemoteObject.narrow(obj, EJBHome.class);
 
